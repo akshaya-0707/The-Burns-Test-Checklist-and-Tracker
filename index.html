@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Burns Monday Check-In</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Manrope:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="bg-shape bg-shape-1" aria-hidden="true"></div>
+    <div class="bg-shape bg-shape-2" aria-hidden="true"></div>
+
+    <header class="hero">
+      <p class="eyebrow">Weekly Mental Health Tracker</p>
+      <h1>Burns Depression Checklist</h1>
+      <p class="subtitle">
+        Fill this every Monday. Your total score is calculated instantly, and your progress is tracked over time.
+      </p>
+      <div id="statusBanner" class="status-banner" role="status" aria-live="polite"></div>
+    </header>
+
+    <main class="layout">
+      <section class="panel checklist-panel">
+        <div class="panel-head">
+          <h2>Checklist</h2>
+          <p>Rate each item from 0 to 4 based on the past week, including today.</p>
+        </div>
+
+        <form id="checklistForm" class="checklist-form"></form>
+
+        <div id="safetyNotice" class="safety-notice hidden" role="alert"></div>
+
+        <div class="score-wrap">
+          <div>
+            <p class="label">Total Score</p>
+            <p id="totalScore" class="score">0</p>
+          </div>
+          <div>
+            <p class="label">Severity</p>
+            <p id="severity" class="severity">No depression</p>
+          </div>
+        </div>
+
+        <div class="actions">
+          <button id="saveButton" type="button" class="btn btn-primary">Save This Week</button>
+          <button id="resetButton" type="button" class="btn btn-ghost">Reset Form</button>
+        </div>
+      </section>
+
+      <aside class="panel progress-panel">
+        <div class="panel-head">
+          <h2>Progress</h2>
+          <p>Your saved weekly entries are shown below.</p>
+        </div>
+
+        <canvas id="progressChart" width="520" height="240" aria-label="Score history chart"></canvas>
+
+        <div id="history" class="history"></div>
+      </aside>
+    </main>
+
+    <template id="rowTemplate">
+      <div class="item-row">
+        <div class="item-header">
+          <span class="item-number"></span>
+          <span class="item-text"></span>
+        </div>
+        <div class="item-options"></div>
+      </div>
+    </template>
+
+    <script src="app.js"></script>
+  </body>
+</html>
